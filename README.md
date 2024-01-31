@@ -32,10 +32,10 @@ stop       Stop the docker container
 ❯ make start
 ```
 
-- Attach to the container
+- Start a bash session on the container
 
 ```shell
-❯ make exec
+❯ make shell
 ```
 
 - Hack!
