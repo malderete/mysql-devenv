@@ -17,6 +17,12 @@ start      Start a docker container in background from mysql-devenv
 stop       Stop the docker container
 ```
 
+## For Mac users
+
+Docker Desktop by default uses "gRPC FUSE" for file sharing implementation. This is *SLOW* and is not handy for compilation processes.
+
+It is highly recommended that you switch to "VirtioFS" ([See this article](https://www.docker.com/blog/speed-boost-achievement-unlocked-on-docker-desktop-4-6-for-mac/)).
+
 
 ## Example worklflow
 
