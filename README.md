@@ -54,38 +54,33 @@ It is recommended that you create a `build` folder inside the MySQL's source cod
 
 ## Building mysqld (server)
 
-- Attach to the container (`make exec`)
+- Attach to the container (`make shell`)
 - Go to the directory `/development/mysql/build`
-- Run `cmake -DWITH_DEBUG=1 ..`
+- Run `cmake -DWITH_DEBUG=1 ..` (Adapt this command to your needs).
 - Run `make -j4 mysqld` (4 indicates the number of CORES to compile)
 
 It will generate the mysqld binary under `runtime_output_directory`
 
-After that you can run your recently compiled version of MySQL by execurting:
+After that you can run your recently compiled version of MySQL by executing:
 ```shell
 $ ./runtime_output_directory/mysqld <arguments>
 ```
 
-
-## Building mysqlclient library
-
-Pre-requisites: First you need to build client library.
-
-- Attach to the container (`make exec`)
-- Go to the directory `/development/mysql/build`
-- Run `make -j4 mysqlclient`
-
-It will generate the mysql client library required for mysql binary.
-
-
 ## Building mysql (client)
 
-Pre-requisites: First you need to build client library.
-
-- Attach to the container (`make exec`)
+- Attach to the container (`make shell`)
 - Go to the directory `/development/mysql/build/client`
 - Run `make -j4`
 
 It will generate the `mysql` (client) binary under `runtime_output_directory`.
+
+## Building mysqlclient library
+
+- Attach to the container (`make shell`)
+- Go to the directory `/development/mysql/build`
+- Run `make -j4 mysqlclient`
+
+It will generate the mysql client library required for mysql (client) binary.
+
 
 # EOF
