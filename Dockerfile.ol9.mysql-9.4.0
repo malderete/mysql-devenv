@@ -1,0 +1,41 @@
+FROM oraclelinux:9
+LABEL org.opencontainers.image.authors="malderete@gmail.com"
+LABEL description="MySQL DEV environment (OL9)"
+
+
+WORKDIR /development/
+
+RUN yum update -y && \
+	yum install -y 'dnf-command(config-manager)' && \
+	if rpm -q centos-stream-release 2>&1 >/dev/null; then echo "- found CentOS 9 stream"; extra_repo=crb; elif rpm -q oraclelinux-release 2>&1 >/dev/null; then echo "- found Oracle Linux 9"; extra_repo=ol9_codeready_builder; elif rpm -q almalinux-release 2>&1 >/dev/null; then echo "- found Alma Linux 9"; extra_repo=crb; elif rpm -q rocky-release 2>&1 >/dev/null; then echo "- found Rocky Linux 9"; extra_repo=crb; else echo "- OS not recognised, giving up" exit 1; fi && \
+	yum config-manager --set-enabled $extra_repo && \
+	yum install -y \
+		bind-utils \
+		bison \
+		cmake \
+		cyrus-sasl-devel \
+		git \
+		krb5-devel \
+		libaio-devel \
+		libcurl-devel \
+		libfido2-devel \
+		libtirpc-devel \
+		libudev-devel \
+		ncurses-devel \
+		numactl-devel \
+		openldap-devel \
+		openssl-devel \
+		perl \
+		perl-JSON rpcgen \
+		rpm-build \
+		time \
+		gcc-toolset-14-annobin-annocheck \
+		gcc-toolset-14-annobin-plugin-gcc \
+		gcc-toolset-14-binutils \
+		gcc-toolset-14-dwz \
+		gcc-toolset-14-gcc \
+		gcc-toolset-14-gcc-c++ \
+		wget \
+		zlib-devel
+
+ENTRYPOINT ["sleep", "infinity"]
